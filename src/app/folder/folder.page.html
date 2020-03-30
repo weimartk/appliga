@@ -14,8 +14,36 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div id="listaEquipos" *ngIf="folder=='Equipos'">
+    <ion-title size="large">Equipos participantes</ion-title>
+    <ion-card *ngFor="let e of equipo">
+      <ion-title size="large">{{e.nombre}}</ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+              <ion-img src="{{e.logo}}"></ion-img>
+          </ion-col>
+          <ion-col size="10">
+            <ion-item>
+              Ciudad: {{e.ciudad}}
+            </ion-item>
+            <ion-item>
+              Estadio: {{e.estadio}}
+            </ion-item>
+            <ion-item>
+              Presidente: {{e.presidente}}
+            </ion-item>
+            <ion-item>
+              Entrenador: {{e.entrenador}}
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+
+  <!--<div id="container">
     <strong class="capitalize">{{ folder }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </div>-->
 </ion-content>
