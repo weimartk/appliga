@@ -16,7 +16,7 @@
 
   <div id="listaEquipos" *ngIf="folder=='Equipos'">
     <ion-title size="large">Equipos participantes</ion-title>
-    <ion-card *ngFor="let e of equipo">
+    <ion-card *ngFor="let e of equipo" [routerLink]="e.url" >
       <ion-title size="large">{{e.nombre}}</ion-title>
       <ion-grid>
         <ion-row>
@@ -41,7 +41,34 @@
       </ion-grid>
     </ion-card>
   </div>
-
+  <div id="detalleEquipo" *ngIf="tipo=='equipo'">
+    <ion-title size="large">{{equipo_seleccionado.nombre}}</ion-title>
+    <ion-img src="{{equipo_seleccionado.logo}}" style="height:80px"></ion-img>
+    <ion-item>
+      Ciudad: {{equipo_seleccionado.ciudad}}
+    </ion-item>
+    <ion-item>
+      Estadio: {{equipo_seleccionado.estadio}}
+    </ion-item>
+    <ion-item>
+      Presidente: {{equipo_seleccionado.presidente}}
+    </ion-item>
+    <ion-item>
+      Entrenador: {{equipo_seleccionado.entrenador}}
+    </ion-item>
+    <ion-title size="medium">Listado de Jugadores</ion-title>
+    <ion-list>
+      <ion-item *ngFor="let j of equipo_seleccionado.jugadores">
+        Número:{{j.numero}},
+        Nacionalidad:{{j.nacionalidad}},
+        Posición:{{j.posicion}},
+        Nombre:{{j.nombre}},
+        Apellido:{{j.apellido}},
+        Edad:{{j.edad}}
+      </ion-item>
+    </ion-list>
+    <ion-button [routerLink]="retorno">Retornar</ion-button>
+  </div>
   <!--<div id="container">
     <strong class="capitalize">{{ folder }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
