@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
       icon: 'person-outline'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
+      title: 'Usuarios',
+      url: '/folder/usuarios',
       icon: 'paper-plane'
     },
     {

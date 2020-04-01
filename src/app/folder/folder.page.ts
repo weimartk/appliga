@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UsuarioProviderService } from '../services/usuario-provider.service';
 
 @Component({
   selector: 'app-folder',
@@ -12,7 +13,8 @@ export class FolderPage implements OnInit {
   public retorno:string;
   public equipo: any;
   public equipo_seleccionado: any;
-  constructor(private activatedRoute: ActivatedRoute) { }
+  public usuarios;
+  constructor(private activatedRoute: ActivatedRoute, public provider:UsuarioProviderService) { }
 
   ngOnInit() {
     this.retorno="/folder/Equipos";
@@ -179,6 +181,14 @@ export class FolderPage implements OnInit {
     ];
     if(this.tipo=='equipo')
       this.equipo_seleccionado=this.equipo[this.folder];
+    if(this.folder=='usuarios')
+    {
+      this.provider.cargarUsuarios().subscribe(
+        (data)=>{this.usuarios=data;console.log(this.usuarios);},
+        (error)=>{console.log(error);}
+      );
+      
+    }
     //console.log(this.folder);
     /*equipo={
       "nombre"

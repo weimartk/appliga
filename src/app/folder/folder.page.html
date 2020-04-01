@@ -73,4 +73,12 @@
     <strong class="capitalize">{{ folder }}</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>-->
+  <div *ngIf="folder=='usuarios'">
+    <ion-list>
+      <ion-item *ngFor='let u of usuarios'>
+        Numero: {{u.id}}<br>
+        Nombre: {{u.name}}
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
