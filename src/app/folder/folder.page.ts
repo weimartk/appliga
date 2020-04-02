@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioProviderService } from '../services/usuario-provider.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-folder',
@@ -14,7 +15,10 @@ export class FolderPage implements OnInit {
   public equipo: any;
   public equipo_seleccionado: any;
   public usuarios;
-  constructor(private activatedRoute: ActivatedRoute, public provider:UsuarioProviderService) { }
+  public nombre;
+  public username;
+  public email;
+  constructor(private activatedRoute: ActivatedRoute, public provider:UsuarioProviderService,public alertctrl:AlertController) { }
 
   ngOnInit() {
     this.retorno="/folder/Equipos";
@@ -187,7 +191,7 @@ export class FolderPage implements OnInit {
         (data)=>{this.usuarios=data;console.log(this.usuarios);},
         (error)=>{console.log(error);}
       );
-      
+
     }
     //console.log(this.folder);
     /*equipo={
@@ -199,4 +203,30 @@ export class FolderPage implements OnInit {
       "entrenador"
     }*/
   }
+  async registrar()
+  {
+    let sw=false;
+    let dato={
+      "name":this.nombre,
+      "username":this.username,
+      "email":this.email
+    };
+    const alert=await this.alertctrl.create({
+      header: 'Aviso',
+      subHeader: 'El usuario fue creado correctamente',
+      buttons: [
+        {
+          text: 'Aceptar',
+          cssClass: 'secondary',
+        }]
+    });
+    this.provider.crearUsuario(dato).subscribe(
+      (data)=>{console.log(data);alert.present()},
+      (error)=>{console.log(error);}
+    );
+    //console.log(sw);
+    //if(sw)
+      //this.mensaje_exito();
+  }
+
 }

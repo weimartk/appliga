@@ -81,4 +81,22 @@
       </ion-item>
     </ion-list>
   </div>
+  <div *ngIf="folder=='registro'">
+    <form (ngSubmit)="registrar()">
+      <ion-title>Registro de nuevo usuario</ion-title>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input name="nombre" [(ngModel)]="nombre" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nombre de Usuario</ion-label>
+        <ion-input name="username" [(ngModel)]="username" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Correo Electrónico</ion-label>
+        <ion-input name="email" [(ngModel)]="email" type="email"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Registrar Nuevo Usuario</ion-button>
+    </form>
+  </div>
 </ion-content>

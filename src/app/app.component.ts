@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Equipos',
       url: '/folder/Equipos',
-      icon: 'person-outline'
+      icon: 'person'
     },
     {
       title: 'Usuarios',
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
       icon: 'paper-plane'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
+      title: 'Registro',
+      url: '/folder/registro',
       icon: 'heart'
     },
     {

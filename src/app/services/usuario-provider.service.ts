@@ -11,5 +11,8 @@ export class UsuarioProviderService {
   cargarUsuarios(){
     return this.http.get("https://jsonplaceholder.typicode.com/users/");
   }
-  
+  crearUsuario(dato){
+    console.log(dato);
+    return this.http.post("https://jsonplaceholder.typicode.com/users/",dato);
+  }
 }
