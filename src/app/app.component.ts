@@ -28,13 +28,13 @@ export class AppComponent implements OnInit {
       icon: 'heart'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
+      title: 'Usuario',
+      url: '/folder/usuario',
       icon: 'archive'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
+      title: 'Login',
+      url: '/folder/login',
       icon: 'trash'
     },
     {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioProviderService } from '../services/usuario-provider.service';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { summaryFileName } from '@angular/compiler/src/aot/util';
 
 @Component({
   selector: 'app-folder',
@@ -18,7 +20,12 @@ export class FolderPage implements OnInit {
   public nombre;
   public username;
   public email;
-  constructor(private activatedRoute: ActivatedRoute, public provider:UsuarioProviderService,public alertctrl:AlertController) { }
+  public password;
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    public provider:UsuarioProviderService,
+    public alertctrl:AlertController,
+    private storage:Storage) { }
 
   ngOnInit() {
     this.retorno="/folder/Equipos";
@@ -229,4 +236,43 @@ export class FolderPage implements OnInit {
       //this.mensaje_exito();
   }
 
+  agregar_usuario(){
+    console.log(this.nombre+" "+this.email+" "+this.password+" ");
+    this.storage.set('nombre',this.nombre).then(
+      ()=>{
+        this.storage.set('email',this.email).then(
+          ()=>{
+            this.storage.set('password',this.password).finally(
+              ()=>{
+                console.log("Guardado realizado");
+              }
+            );
+          }
+        );
+      }
+    );
+
+    
+  }
+  loguear(){
+    let email_comparacion=this.storage.get('email');
+//    console.log("var:"+email_comparacion);
+    this.storage.get('email').then(
+      (data)=>{
+        if(data==this.email)
+          {
+          this.storage.get('password').then(
+            (data2)=>{
+              if(data2==this.password)
+                console.log('Ingreso correcto');
+              else
+                console.log("Error en la contraseña");
+            }
+          );
+          }
+        else
+          console.log("Error en el Correo");
+      }      
+    );
+  }
 }

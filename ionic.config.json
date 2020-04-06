@@ -1,5 +1,7 @@
 {
   "name": "AppLiga",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
