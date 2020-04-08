@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioProviderService } from '../services/usuario-provider.service';
+import { RegistroProviderService } from '../services/registro-provider.service';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
@@ -25,9 +26,11 @@ export class FolderPage implements OnInit {
     private activatedRoute: ActivatedRoute, 
     public provider:UsuarioProviderService,
     public alertctrl:AlertController,
-    private storage:Storage) { }
+    private storage:Storage,
+    public registro:RegistroProviderService) { }
 
   ngOnInit() {
+    this.registro.crearDB();
     this.retorno="/folder/Equipos";
     this.tipo=this.activatedRoute.snapshot.paramMap.get('tipo');
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -237,7 +240,7 @@ export class FolderPage implements OnInit {
   }
 
   agregar_usuario(){
-    console.log(this.nombre+" "+this.email+" "+this.password+" ");
+    console.log(this.nombre+" "+this.email+" "+this.password+" ");/*
     this.storage.set('nombre',this.nombre).then(
       ()=>{
         this.storage.set('email',this.email).then(
@@ -250,12 +253,28 @@ export class FolderPage implements OnInit {
           }
         );
       }
-    );
-
-    
+    );*/
+//    this.registro.crearDB();
+    let usuario_new={
+      name:this.nombre,
+      email:this.email,
+      password:this.password
+    };
+    this.registro.insertarUsuario(usuario_new);
   }
   loguear(){
-    let email_comparacion=this.storage.get('email');
+    let user:any=this.registro.getUsuario(this.email);
+    if(user.email==this.email)
+      {
+        if(user.password==this.password)
+          console.log('Ingreso correcto');
+        else
+            console.log("Error en la contraseña");
+      }
+      else
+        console.log("Error en el correo");
+
+/*    let email_comparacion=this.storage.get('email');
 //    console.log("var:"+email_comparacion);
     this.storage.get('email').then(
       (data)=>{
@@ -273,6 +292,6 @@ export class FolderPage implements OnInit {
         else
           console.log("Error en el Correo");
       }      
-    );
+    );*/
   }
 }

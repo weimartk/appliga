@@ -10,7 +10,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuarioProviderService } from './services/usuario-provider.service'
+import { RegistroProviderService } from './services/registro-provider.service'
 import { IonicStorageModule } from '@ionic/storage';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +28,9 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UsuarioProviderService
+    UsuarioProviderService,
+    RegistroProviderService,
+    SQLite
   ],
   bootstrap: [AppComponent]
 })
