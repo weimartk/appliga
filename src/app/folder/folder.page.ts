@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioProviderService } from '../services/usuario-provider.service';
 import { RegistroProviderService } from '../services/registro-provider.service';
+import { FbloginService } from '../services/fblogin.service';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
@@ -22,15 +23,17 @@ export class FolderPage implements OnInit {
   public username;
   public email;
   public password;
+  public facebook_account;
   constructor(
     private activatedRoute: ActivatedRoute, 
     public provider:UsuarioProviderService,
     public alertctrl:AlertController,
     private storage:Storage,
-    public registro:RegistroProviderService) { }
+    public registro:RegistroProviderService,
+    public fb:FbloginService) { }
 
   ngOnInit() {
-    this.registro.crearDB();
+//    this.registro.crearDB();
     this.retorno="/folder/Equipos";
     this.tipo=this.activatedRoute.snapshot.paramMap.get('tipo');
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -230,10 +233,11 @@ export class FolderPage implements OnInit {
           cssClass: 'secondary',
         }]
     });
-    this.provider.crearUsuario(dato).subscribe(
+  /*  this.provider.crearUsuario(dato).subscribe(
       (data)=>{console.log(data);alert.present()},
-      (error)=>{console.log(error);}
-    );
+      (error)=>{console.log(error);
+      }
+    );*/
     //console.log(sw);
     //if(sw)
       //this.mensaje_exito();
@@ -260,10 +264,10 @@ export class FolderPage implements OnInit {
       email:this.email,
       password:this.password
     };
-    this.registro.insertarUsuario(usuario_new);
+    //this.registro.insertarUsuario(usuario_new);
   }
   loguear(){
-    let user:any=this.registro.getUsuario(this.email);
+    /*let user:any=this.registro.getUsuario(this.email);
     if(user.email==this.email)
       {
         if(user.password==this.password)
@@ -293,5 +297,13 @@ export class FolderPage implements OnInit {
           console.log("Error en el Correo");
       }      
     );*/
+  }
+  loguearFB(){
+    //this.facebook_account=this.fb.loginFB();
+
+  }
+  loguearG(){
+    this.facebook_account=JSON.stringify(this.fb.loginG());
+
   }
 }
