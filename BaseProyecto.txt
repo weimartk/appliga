@@ -1,0 +1,29 @@
+Reto
+-La tienda de ropa "Patito" requiere promocionar sus productos por medios digitales
+Objetivos
+-O.G.
+--Desarrollar una aplicacion móvil con el framework Ionic para la promoción de productos de la tienda de ropa "Patito"
+-O.E.
+--Desarrollar un módulo para el registro de visitantes por medio de FB
+--Desarrollar un módulo para recuperar los productos de una API y visualizarlos
+--Desarrollar un módulo para la solicitud de productos por parte del visitante
+Metodología Aplicada
+-Método Deductivo: Se analizó la empresa, sus áreas, sus productos, etc...
+-Situacion Problema: Se analizó el proceso de promoción de los productos y en base a lo observado se determinó una situación problema, posteriormente se propuso una solución tecnológica
+Fundamentos Teóricos
+-Marco Teórico: Información que sea necesaria para ENTENDER de lo que se está hablando en el proyecto
+Análisis de la situación
+-Situación actual de la empresa/proceso/actividad 
+-Problema detectado: Causa->efecto
+-Problema a solucionar: Insuficiente promoción de los productos que genera ventas bajas
+Desarrollo de la propuesta de solución
+-OE 1:capturas de pantalla diseño, código, módulo funcionando
+-OE 2:capturas de pantalla diseño, código, módulo funcionando
+-OE 3:capturas de pantalla diseño, código, módulo funcionando
+Conclusiones
+-Se ha desarrollado un modulo p registro de visitantes por medio de un boton que conecta con la API de FB para loguearse....
+-Se ha desarrollado un modulo que se conecta con la API de la web www.productos.com y recibe los datos de los productos, posteriormente los muestra en una lista.....
+-
+Bibliografía
+- 
+- 
